@@ -1,19 +1,19 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB connection error");
+  $dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test") or die("Error Error");
 
-$sql = "
-SELECT *
-FROM article AS A
-ORDER BY A.id DESC
-";
-$rs = mysqli_query($dbConn, $sql);
+  $sql = "
+  SELECT *
+  FROM article AS A
+  ORDER BY A.id DESC 
+  ";
 
-$articles = [];
+  $rs = mysqli_query($dbConn, $sql);
 
-while($article = mysqli_fetch_assoc($rs)){
-  
-  $articles[] = $article;
-}
+  $articles = [];
+
+  while($article = mysqli_fetch_assoc($rs)){
+    $articles[] = $article;
+  }
 
 ?>
 
@@ -28,16 +28,16 @@ while($article = mysqli_fetch_assoc($rs)){
 <body>
   <h1>게시물 리스트</h1>
   <hr>
-
-  <div>
-    <?php foreach ($articles as $article) {?>
-      번호 : <?=$article['id']?><br>
-      등록일 : <?=$article['regDate']?><br>
-      수정일 : <?=$article['updatedate']?><br>
-      제목 : <?=$article['title']?><br>
-      <hr>
-    <?php }?>
-  </div>
+  
+  <?php foreach($articles as $article) {?>
+    <?php
+      $detailUri = "detail.php?id=${article['id']}";  
+    ?>
+    <a href="<?=$detailUri?>">번호 : <?=$article['id']?></a><br>
+    등록일 : <?=$article['regDate']?><br>
+    <a href="<?=$detailUri?>">제목 : <?=$article['title']?></a><br>
+    <hr>
+  <?php }?>
 
 </body>
 </html>
