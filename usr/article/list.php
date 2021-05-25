@@ -29,6 +29,8 @@ while($article = mysqli_fetch_assoc($rs)){
   <h1>게시물 리스트</h1>
   <hr>
   <a href="write.php">글쓰기</a>
+  <a href="modify.php">수정</a>
+  <a href="delete.php">삭제</a>
   <hr>
 
   <?php foreach( $articles as $article ) {?>
