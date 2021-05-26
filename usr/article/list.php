@@ -1,5 +1,6 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test_3") or die("Error man");
+
+$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test_4") or die("Error yo");
 
 $sql = "
 SELECT *
@@ -29,17 +30,15 @@ while($article = mysqli_fetch_assoc($rs)){
   <h1>게시물 리스트</h1>
   <hr>
   <a href="write.php">글쓰기</a>
-  <a href="modify.php">수정</a>
-  <a href="delete.php">삭제</a>
   <hr>
 
-  <?php foreach( $articles as $article ) {?>
-    <?php $detailUri = "detail.php?id=${article['id']}" ?>
-    <a href=<?=$detailUri?>>번호 : <?=$article['id']?></a><br>
-    등록일 : <?=$article['regDate']?><br>
-    <a href=<?=$detailUri?>>제목 : <?=$article['title']?></a><br>
+  <?php foreach($articles as $article) {?>
+  
+    <a href="detail.php?id=<?=$article['id']?>">번호 : <?=$article['id']?></a><br>
+    등록 : <?=$article['regDate']?><br>
+    <a href="detail.php?id=<?=$article['id']?>">제목 : <?=$article['title']?></a><br>
     <hr>
   <?php }?>
-
+  
 </body>
 </html>

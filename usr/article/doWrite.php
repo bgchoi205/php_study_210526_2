@@ -1,13 +1,13 @@
-<?php 
+<?php
 
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test_3") or die("Error man");
+$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test_4") or die("Error yo");
 
-if( !isset($_GET['title']) ){
+if(!isset($_GET['title'])){
   echo "제목을 입력해주세요.";
   exit;
 }
 
-if( !isset($_GET['body']) ){
+if(!isset($_GET['body'])){
   echo "내용을 입력해주세요.";
   exit;
 }
@@ -30,6 +30,6 @@ $id = mysqli_insert_id($dbConn);
 ?>
 
 <script>
-alert("<?=$id?>번 게시물 생성 완료");
+alert("<?=$id?>번 게시물이 등록되었습니다.");
 location.replace("detail.php?id=<?=$id?>");
 </script>

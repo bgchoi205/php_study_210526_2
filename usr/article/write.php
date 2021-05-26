@@ -7,32 +7,27 @@
   <title>게시물 작성</title>
 </head>
 <body>
-  <h1>게시물 작성</h1>
+  <h1>게시물 작성하기</h1>
   <hr>
-  <a href="list.php">리스트 목록</a>
+  <a href="list.php">리스트</a>
   <hr>
 
   <form action="doWrite.php">
-  
   <div>
-    <span>제목</span>
-    <br>
-    <input required placeholder="제목입력" type="text" name="title">
+  <span>제목</span><br>
+  <input required placeholder="제목입력" type="text" name="title">
   </div>
   <br>
-
   <div>
-    <span>내용</span>
-    <br>
-    <textarea required placeholder="내용입력" name="body"></textarea>
+  <span>내용</span><br>
+  <textarea required placeholder="내용입력" name="body"></textarea>
   </div>
   <br>
-
   <div>
-    <input type="submit" value="작성">
+  <input type="submit" value="등록">
   </div>
-  
+
   </form>
-
+  
 </body>
 </html>
