@@ -9,19 +9,16 @@ $id = intval($_GET['id']);
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?=$id?>번 게시물 수정</title>
-</head>
-<body>
-  <h1><?=$id?>번 게시물 수정</h1>
-  <hr>
+<?php
+$pageTitle = "게시물 수정, $id 번";
+?>
+
+<?php require_once __DIR__ . "/../head.php"; ?>
+
+  <div>
   <a href="list.php">리스트</a>
   <a href="detail.php?id=<?=$id?>">원문</a>
+  </div>
   <hr>
 
   <form action="doModify.php">
@@ -44,5 +41,4 @@ $id = intval($_GET['id']);
 
   </form>
   
-</body>
-</html>
+  <?php require_once __DIR__ . "/../foot.php"; ?>

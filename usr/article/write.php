@@ -1,15 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>게시물 작성</title>
-</head>
-<body>
-  <h1>게시물 작성하기</h1>
-  <hr>
+
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
+
+$pageTitle = "게시물 작성";
+?>
+
+<?php require_once __DIR__ . "/../head.php"; ?>
+
+  <div>
   <a href="list.php">리스트</a>
+  </div>
   <hr>
 
   <form action="doWrite.php">
@@ -29,5 +29,4 @@
 
   </form>
   
-</body>
-</html>
+  <?php require_once __DIR__ . "/../foot.php"; ?>

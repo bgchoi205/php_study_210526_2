@@ -1,6 +1,6 @@
 <?php
 
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_test_4") or die("Error yo");
+require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 if(!isset($_GET['id'])){
   echo "id를 입력해주세요.";
@@ -17,31 +17,34 @@ WHERE A.id = '$id'
 
 $rs = mysqli_query($dbConn, $sql);
 
-$article = mysqli_fetch_assoc($rs)
+$article = mysqli_fetch_assoc($rs);
+
+if($article == null){
+  echo "존재하지 않는 게시물입니다.";
+  exit;
+}
 
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?=$id?>번 게시물 상세보기</title>
-</head>
-<body>
-  <h1><?=$id?>번 게시물 상세보기</h1>
-  <hr>
+<?php
+$pageTitle = "게시물 상세, ${id}번";
+?>
+
+<?php require_once __DIR__ . "/../head.php"; ?>
+
+  <div>
   <a href="list.php">리스트</a>
   <a onclick="if(confirm('정말 삭제하시겠습니까?') == false ) return false;" href="doDelete.php?id=<?=$article['id']?>">삭제</a>
   <a href="modify.php?id=<?=$article['id']?>">수정</a>
+  </div>
   <hr>
-  번호 : <?=$article['id']?><br>
-  등록 : <?=$article['regDate']?><br>
-  수정 : <?=$article['updateDate']?><br>
-  제목 : <?=$article['title']?><br>
-  내용 : <?=$article['body']?><br>
+  <div>
+    번호 : <?=$article['id']?><br>
+    등록 : <?=$article['regDate']?><br>
+    수정 : <?=$article['updateDate']?><br>
+    제목 : <?=$article['title']?><br>
+    내용 : <?=$article['body']?><br>
+  </div>
   <hr>
   
-</body>
-</html>
+  <?php require_once __DIR__ . "/../foot.php"; ?>
