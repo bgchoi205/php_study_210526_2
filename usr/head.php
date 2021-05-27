@@ -10,3 +10,12 @@
 <body>
   <h1><?=$pageTitle?></h1>
   <hr>
+  <?php if( !isset($_SESSION['loginedMemberId']) ) {?>
+    <a href="../member/login.php">로그인</a>
+
+  <?php }?>
+
+  <?php if( isset($_SESSION['loginedMemberId']) ) {?>
+    <a href="../member/doLogout.php">로그아웃</a>
+
+  <?php }?>
