@@ -8,7 +8,7 @@ $pageTitle = "회원가입";
 <?php require_once __DIR__ . "/../head.php"; ?>
 
   <div>
-  <a href="list.php">리스트</a>
+  <a href="../article/list.php">리스트</a>
   </div>
   <hr>
 

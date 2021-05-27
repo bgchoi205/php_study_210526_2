@@ -51,6 +51,6 @@ $id = mysqli_insert_id($dbConn);
 ?>
 
 <script>
-alert("<?=$id?>번 회원으로 가입되었습니다.");
+alert("회원 가입되었습니다.");
 location.replace("login.php");
 </script>

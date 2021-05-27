@@ -1,4 +1,5 @@
 <?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 if(!isset($_GET['id'])){
   echo "id를 입력해주세요.";

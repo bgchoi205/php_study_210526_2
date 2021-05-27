@@ -12,10 +12,13 @@
   <hr>
   <?php if( !isset($_SESSION['loginedMemberId']) ) {?>
     <a href="../member/login.php">로그인</a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="../member/join.php">회원가입</a>
+    <hr>
 
   <?php }?>
 
   <?php if( isset($_SESSION['loginedMemberId']) ) {?>
     <a href="../member/doLogout.php">로그아웃</a>
-
+    <hr>
   <?php }?>

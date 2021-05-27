@@ -14,6 +14,13 @@ $pageTitle = "게시물 작성";
 
   <form action="doWrite.php">
   <div>
+  <span>게시판 선택</span><br>
+  <select required name="boardId">
+    <option value="1">1.공지</option>
+    <option value="2">2.자유</option>
+  </select>
+  </div>
+  <div>
   <span>제목</span><br>
   <input required placeholder="제목입력" type="text" name="title">
   </div>

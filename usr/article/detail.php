@@ -19,6 +19,7 @@ $rs = mysqli_query($dbConn, $sql);
 
 $article = mysqli_fetch_assoc($rs);
 
+
 if($article == null){
   echo "존재하지 않는 게시물입니다.";
   exit;
