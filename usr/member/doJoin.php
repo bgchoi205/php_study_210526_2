@@ -33,6 +33,21 @@ $name = $_GET['name'];
 $nickName = $_GET['nickName'];
 $email = $_GET['email'];
 
+$sqlCheck = "
+SELECT *
+FROM `member` AS M
+WHERE M.loginId = '$loginId'
+";
+
+$rsCheck = mysqli_query($dbConn, $sqlCheck);
+
+$member = mysqli_fetch_assoc($rsCheck);
+
+if( $member != null ){
+  echo "사용중인 아이디입니다.";
+  exit;
+}
+
 $sql = "
 INSERT INTO `member`
 SET regDate = NOW(),

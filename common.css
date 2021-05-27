@@ -9,3 +9,13 @@ textarea {
   height:100px;
   resize: none;
 }
+
+div > .replyTop{
+  font-size: 10px;
+  font-weight: normal;
+  color:black;
+}
+
+.replyWriter{
+  font-weight: bold;
+}

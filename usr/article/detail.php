@@ -25,6 +25,36 @@ if($article == null){
   exit;
 }
 
+$loginedMemberId = $_SESSION['loginedMemberId'];
+
+
+$sqlReply = "
+SELECT *
+FROM reply AS R
+WHERE R.articleId = '$id'
+ORDER BY R.id DESC
+";
+
+$rsReply = mysqli_query($dbConn, $sqlReply);
+
+$replies = [];
+
+while( $reply = mysqli_fetch_assoc($rsReply) ){
+  $replies[] = $reply;
+}
+
+
+$sqlMember = "
+SELECT *
+FROM `member` AS M
+WHERE M.id = ${article['memberId']}
+";
+
+$rsMember = mysqli_query($dbConn, $sqlMember);
+
+$member = mysqli_fetch_assoc($rsMember);
+
+
 ?>
 
 <?php
@@ -41,11 +71,32 @@ $pageTitle = "게시물 상세, ${id}번";
   <hr>
   <div>
     번호 : <?=$article['id']?><br>
+    작성자 : <?=$member['nickName']?><br>
     등록 : <?=$article['regDate']?><br>
     수정 : <?=$article['updateDate']?><br>
     제목 : <?=$article['title']?><br>
     내용 : <?=$article['body']?><br>
   </div>
   <hr>
+  <h2>댓글 목록</h2>
+  <span>댓글쓰기</span>
+  <br>
+  <form action="../reply/doWrite.php">
+    <input type="hidden" name="articleId" value="<?=$article['id']?>">
+    <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
+    <textarea name="body"></textarea>
+    <input type="submit" value="등록">
+  </form>
+  <hr>
+
+  <?php foreach($replies as $reply) { ?>
+    
+    <span class="replyWriter replyTop"><?=$member['nickName']?></span>&nbsp;&nbsp;
+    <span class="replyTop"><?=$reply['regDate']?></span>
+    <br>
+    <br>
+    <span class="replyBottom"><?=$reply['body']?></span>
+    <hr>
+  <?php }?>
   
   <?php require_once __DIR__ . "/../foot.php"; ?>

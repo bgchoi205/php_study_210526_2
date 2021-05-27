@@ -26,7 +26,9 @@ $rs = mysqli_query($dbConn, $sql);
 $member = mysqli_fetch_assoc($rs);
 
 if( empty($member) ){
-  echo "존재하지 않는 아이디입니다.";
+  echo "<script>alert(\"존재하지 않는 아이디입니다.\");</script>";
+  $HTTP_REFERER = $_SERVER['HTTP_REFERER'];
+  header('Location: ' . $HTTP_REFERER);
   exit;
 }
 
@@ -38,6 +40,7 @@ if( $member['loginPw'] != $loginPw ){
 $_SESSION['loginedMemberId'] = $member['id'];
 
 ?>
+
 
 <script>
 alert("<?=$member['nickName']?>님 환영합니다.");
