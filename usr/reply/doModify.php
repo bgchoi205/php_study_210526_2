@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 if( !isset($_SESSION['loginedMemberId']) ){
-  echo "로그인 후 이용해주세요.";
+  print "<script language=javascript> alert('로그인 후 이용해주세요.'); history.back(-2); </script>";
   exit;
 }
 
@@ -14,10 +14,7 @@ if(!isset($_GET['id'])){
 
 $id = intval($_GET['id']);
 
-if(!isset($_GET['title'])){
-  echo "제목을 입력해주세요.";
-  exit;
-}
+
 
 if(!isset($_GET['body'])){
   echo "내용을 입력해주세요.";
@@ -34,12 +31,13 @@ SET updateDate = NOW(),
 WHERE id = '$id'
 ";
 
-mysqli_query($dbConn, $sql);
+$rs = mysqli_query($dbConn, $sql);
 
+$reply = mysqli_fetch_assoc($rs);
 
 ?>
 
 <script>
-alert("<?=$id?>번 게시물이 수정되었습니다.");
-location.replace("detail.php?id=<?=$id?>");
+alert("댓글이 수정되었습니다.");
+location.replace("detail.php?id=<?=$reply['articleId']?>");
 </script>

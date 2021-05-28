@@ -3,7 +3,7 @@
 require_once $_SERVER['DOCUMENT_ROOT'] . '/webInit.php';
 
 if( !isset($_SESSION['loginedMemberId']) ){
-  echo "로그인 후 이용해주세요.";
+  print "<script language=javascript> alert('로그인 후 이용해주세요.'); history.back(-2); </script>";
   exit;
 }
 
@@ -29,7 +29,8 @@ $body = $_GET['body'];
 
 $sql = "
 UPDATE article
-SET title = '$title',
+SET updateDate = NOW(),
+title = '$title',
 `body` = '$body'
 WHERE id = '$id'
 ";

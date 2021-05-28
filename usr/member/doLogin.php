@@ -26,14 +26,12 @@ $rs = mysqli_query($dbConn, $sql);
 $member = mysqli_fetch_assoc($rs);
 
 if( empty($member) ){
-  echo "<script>alert(\"존재하지 않는 아이디입니다.\");</script>";
-  $HTTP_REFERER = $_SERVER['HTTP_REFERER'];
-  header('Location: ' . $HTTP_REFERER);
+  print "<script language=javascript> alert('존재하지 않는 아이디입니다.'); history.back(-2); </script>";
   exit;
 }
 
 if( $member['loginPw'] != $loginPw ){
-  echo "비밀번호가 틀립니다.";
+  print "<script language=javascript> alert('비밀번호가 틀립니다.'); history.back(-2); </script>";
   exit;
 }
 

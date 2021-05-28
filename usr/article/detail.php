@@ -104,7 +104,8 @@ $pageTitle = "게시물 상세, ${id}번";
     
     <span class="replyWriter replyTop"><?=$writer['nickName']?></span>&nbsp;&nbsp;
     <span class="replyTop"><?=$reply['regDate']?></span>&nbsp;&nbsp;
-    <span><a href="../reply/doDelete.php?id=<?=$reply['id']?>">삭제</a></span>
+    <span><a href="../reply/doDelete.php?id=<?=$reply['id']?>">삭제</a></span>&nbsp;
+    <span><a href="../reply/doModify.php?id=<?=$reply['id']?>">수정</a></span>
     <br>
     <br>
     <span class="replyBottom"><?=$reply['body']?></span>
