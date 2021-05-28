@@ -90,9 +90,21 @@ $pageTitle = "게시물 상세, ${id}번";
   <hr>
 
   <?php foreach($replies as $reply) { ?>
+    <?php
+      $sqlWriter = "
+      SELECT *
+      FROM `member` AS M
+      WHERE M.id = ${reply['memberId']}
+      ";  
+
+      $rsWriter = mysqli_query($dbConn, $sqlWriter);
+
+      $writer = mysqli_fetch_assoc($rsWriter);
+    ?>
     
-    <span class="replyWriter replyTop"><?=$member['nickName']?></span>&nbsp;&nbsp;
-    <span class="replyTop"><?=$reply['regDate']?></span>
+    <span class="replyWriter replyTop"><?=$writer['nickName']?></span>&nbsp;&nbsp;
+    <span class="replyTop"><?=$reply['regDate']?></span>&nbsp;&nbsp;
+    <span><a href="../reply/doDelete.php?id=<?=$reply['id']?>">삭제</a></span>
     <br>
     <br>
     <span class="replyBottom"><?=$reply['body']?></span>
